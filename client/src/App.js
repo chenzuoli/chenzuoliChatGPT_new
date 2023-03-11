@@ -7,7 +7,8 @@ import ChatBox from "./ChatBox";
 function App() {
   const [chatInput, setChatInput] = useState("");
   const [temperature, setTemperature] = useState(0.5);
-  const [currentModel, setCurrentModel] = useState("text-davinci-003");
+  // const [currentModel, setCurrentModel] = useState("text-davinci-003");
+  const [currentModel, setCurrentModel] = useState("gpt-3.5-turbo");
   const [chatLog, setChatLog] = useState([
     {
       user: "gpt",
@@ -30,9 +31,9 @@ function App() {
 
     //const response = await fetch("https://express-demo-gamma.vercel.app/", {
     //const response = await fetch("https://chatapi-theta.vercel.app:3080", {
-    //const response = await fetch("http://localhost:3080", {
+    // const response = await fetch("http://localhost:3080", {
     //const response = await fetch("https://chatapi-chenzuoli.vercel.app/", {
-    const response = await fetch("https://chenzuoli-chatapi.netlify.app/", {
+    const response = await fetch("https://chatapi-new.vercel.app/", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

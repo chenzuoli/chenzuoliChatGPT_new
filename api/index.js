@@ -4,8 +4,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require("cors");
 const operandClient = require("@operandinc/sdk").operandClient;
-const indexIDHeaderKey = require("@operandinc/sdk").indexIDHeaderKey;
-const ObjectService = require("@operandinc/sdk").ObjectService;
+const OperandService = require("@operandinc/sdk").OperandService;
 
 // Open AI Configuration
 const configuration = new Configuration({
@@ -29,18 +28,16 @@ app.post("/", async (req, res) => {
 
   const runIndex = async () => {
     const operand = operandClient(
-      ObjectService,
+      OperandService,
       "bdxgbb5ob9tchx3ym7ujs9c7oex99mok8ivr",
-      "https://api.operand.ai",
-      {
-         [indexIDHeaderKey]: "z1b0740cgerk"
-      }
+      "https://mcp.operand.ai"
     );
 
     try {
-      const results = await operand.searchWithin({
+      const results = await operand.search({
         query: `${message}`,
-        limit: 5,
+        parentId: "",
+        maxResults: 3
       });
 
       if (results) {
@@ -55,7 +52,8 @@ app.post("/", async (req, res) => {
 
   let operandSearch = await runIndex(message);
 
-  const basePromptPrefix = `This is a conversation between bloger Chenzuoli and a stranger.\nRelevant information that zuoli knows:\n${operandSearch}`;
+  const basePromptPrefix = `This is a conversation between bloger Chenzuoli and a stranger.\nRelevant information that Chenzuoli knows:\n${operandSearch}`;
+  console.log(basePromptPrefix)
 
   const response = await openai.createCompletion({
     model: "text-davinci-003",
