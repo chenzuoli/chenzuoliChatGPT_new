@@ -2,7 +2,7 @@
 // src="https://i.imgur.com/EGGQJFm.jpg"
 
 const OpenAISVGLogo = () => (
-  <div class="w-1">
+  <div className="w-1">
     <div style={{ width: "50px", height: "50px" }}>
       <img
         src="https://i.postimg.cc/SNWdnk9v/summer-square.png"

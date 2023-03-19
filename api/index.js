@@ -15,7 +15,7 @@ const openai = new OpenAIApi(configuration);
 
 // Express Configuration
 const app = express();
-const port = 80;
+const port = 3080;
 
 app.use(bodyParser.json());
 app.use(cors());
@@ -29,7 +29,7 @@ app.post("/", async (req, res) => {
   const runIndex = async () => {
     const operand = operandClient(
       OperandService,
-      "bdxgbb5ob9tchx3ym7ujs9c7oex99mok8ivr",
+      "Key pdo75w61w4pw8tjc1y7ecox1s1ahv8ss",
       "https://mcp.operand.ai"
     );
 
