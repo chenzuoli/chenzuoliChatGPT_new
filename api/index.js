@@ -50,13 +50,16 @@ app.post("/", async (req, res) => {
     }
   };
 
-  let operandSearch = await runIndex(message);
+  // let operandSearch = await runIndex(message);
+  let basePrompt = "我的好兄弟是白璐，他是一个职业投资人\n我的妻子是邓佳滢，她是文化行业从业者\n我有许多个博客网站，一般在github pages上写的比较全，另外csdn和知乎偶尔写一些，记录一些可能经常用到的东西，后面可以自己查看。\nhttps://chenzuoli.github.io/\nhttps://blog.csdn.net/chenzuoli\nhttps://www.zhihu.com/people/nihaoshijie709918\n我的微信公众号：程序员写书，里面最近记录的是关于商业的知识，欢迎关注👏🏻\n学习股票交易中，也在学习AIGC、ChatGPT，不想被AI替代\n这是我的个人简历：https://chenzuoli.github.io/2021/09/27/%E4%B8%AA%E4%BA%BA%E7%AE%80%E5%8E%86/"
 
-  const basePromptPrefix = `This is a conversation between bloger Chenzuoli and a stranger.\nRelevant information that Chenzuoli knows:\n${operandSearch}`;
-  console.log(basePromptPrefix)
+
+  const basePromptPrefix = `This is a conversation between bloger Chenzuoli and a stranger.\nRelevant information that Chenzuoli knows:\n${basePrompt}`;
+  // console.log(basePromptPrefix)
 
   const response = await openai.createCompletion({
-    model: "text-davinci-003",
+    // model: "text-davinci-003",
+    model: "gpt-3.5-turbo",
     prompt: `${basePromptPrefix}\n\nStranger:${message}\n\nChenzuoli:`,
     max_tokens: 256,
     temperature: 0.7,
