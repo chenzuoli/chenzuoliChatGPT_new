@@ -1,10 +1,10 @@
 # ChatGPT_Clone
 
-This is the code for "I Built a ChatGPT Clone of Myself!" by Siraj Raval on Youtube
+This is the code for "I Built a ChatGPT Clone of Myself!" by chenzuoli
 
 ## Overview 
 
-This is a a ChatGPT template that you can use to create an AI Avatar of yourself. It was used in [this](https://youtu.be/OoMjOrLac-o) video by Siraj Raval on Youtube. It consists
+This is a a ChatGPT template that you can use to create an AI Avatar of yourself. It consists
 of a React template, and 2 important connections: the OpenAI API and the Operand API. There is a server component in Node, and a client component in React. 
 
 ## Dependencies
