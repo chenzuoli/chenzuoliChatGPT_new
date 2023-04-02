@@ -37,14 +37,7 @@ app.post("/", async (req, res) => {
     //model: "gpt-3.5-turbo",
     prompt: `${basePromptPrefix}\n\nStranger:${message}\n\nChenzuoli:`,
     max_tokens: 1024,
-    temperature: 0.7,
-    topP: 1,
-    presencePenalty: 0,
-    frequencyPenalty: 0,
-    bestOf: 1,
-    n: 1,
-    stream: false,
-    stop: ["\n", "AI:"],
+    temperature: 0.7
   });
   res.json({
     message: response.data.choices[0].text,
