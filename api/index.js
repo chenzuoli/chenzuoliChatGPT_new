@@ -22,7 +22,7 @@ app.use(require("morgan")("dev"));
 
 // Routing
 // Primary Open AI Route
-app.post("/", async (req, res) => {
+app.post("/chenzuoli", async (req, res) => {
   // console.log("OpenAI API Key: " + process.env.OPENAI_API_KEY);
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE'); // If needed
@@ -47,6 +47,29 @@ app.post("/", async (req, res) => {
     message: response.data.choices[0].text,
   });
 });
+
+// add another route "chat", user can chat with the chatgpt, and set basePromptPrefix as the parameter
+app.post("/chat", async (req, res) => {
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE'); // If needed
+  res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type'); // If needed
+  res.setHeader('Access-Control-Allow-Credentials', true); // If needed
+
+  const { message, basePromptPrefix } = req.body;
+  console.log(req + ":" + `${message}`)
+  console.log(req + ":" + `${basePromptPrefix}`)
+  const response = await openai.createCompletion({
+    model: "text-davinci-003",
+    //model: "gpt-3.5-turbo",
+    prompt: `${basePromptPrefix}\n\nYou:${message}\n\nAI:`,
+    max_tokens: 1024,
+    temperature: 0.7
+  });
+  res.json({
+    message: response.data.choices[0].text,
+  });
+});
+
 
 // Get Models Route
 
