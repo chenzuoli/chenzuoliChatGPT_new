@@ -32,17 +32,22 @@ function App() {
     //const response = await fetch("https://express-demo-gamma.vercel.app/", {
     //const response = await fetch("https://chatapi-theta.vercel.app:3080", {
     // const response = await fetch("http://localhost:3080", {
-    const response = await fetch("http://43.153.35.39:3080", {
-    //const response = await fetch("https://chatapi-chenzuoli.vercel.app/", {
-    //const response = await fetch("https://chatapi-new.vercel.app/", {
-     method: "POST",
-     headers: {
-       "Content-Type": "application/json",
-     },
-     body: JSON.stringify({
-       message: messages,
-       currentModel,
-     }),
+    const response = await fetch("http://43.153.96.195/chenzuoli/", {
+      // mode: 'no-cors',
+      //const response = await fetch("https://chatapi-chenzuoli.vercel.app/", {
+      //const response = await fetch("https://chatapi-new.vercel.app/", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        // "Access-Control-Allow-Origin": "*",
+        // "Access-Control-Allow-Methods": "GET, POST, OPTIONS, PUT, PATCH, DELETE",
+        // "Access-Control-Allow-Headers": "Access-Control-Allow-Headers, Origin,Accept, X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers",
+        // "Access-Control-Allow-Credentials": true,
+      },
+      body: JSON.stringify({
+        message: messages,
+        currentModel,
+      }),
     });
     const data = await response.json();
     console.log('response: ' + data)
