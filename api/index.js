@@ -8,7 +8,7 @@ const OperandService = require("@operandinc/sdk").OperandService;
 
 // Open AI Configuration
 const configuration = new Configuration({
-  apiKey: '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'
+  apiKey: 'sk-xxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
 });
 
 const openai = new OpenAIApi(configuration);
